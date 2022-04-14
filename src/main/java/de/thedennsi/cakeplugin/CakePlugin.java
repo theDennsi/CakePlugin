@@ -1,6 +1,7 @@
 package de.thedennsi.cakeplugin;
 
 import de.thedennsi.cakeplugin.recipes.CakeRecipe;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +16,7 @@ public class CakePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         this.init();
+        Bukkit.getServer().getOnlinePlayers().forEach(player -> player.sendMessage("penis"));
     }
 
     private void init() {
