@@ -22,7 +22,6 @@ public class PlayerItemConsumeListener implements Listener {
 
         if (event.getClickedBlock().getType().equals(Material.CAKE))
             return;
-
         
     }
 }
