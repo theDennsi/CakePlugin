@@ -1,0 +1,6 @@
+main: de.thedennsi.cakeplugin.CakePlugin
+name: cakeplugin
+version: 1.0
+api-version: 1.18
+commands:
+  triggerevent:
