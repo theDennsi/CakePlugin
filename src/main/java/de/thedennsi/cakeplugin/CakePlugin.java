@@ -22,7 +22,7 @@ public class CakePlugin extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        getCommand("triggerevent").setExecutor(new TriggerEventCommand());
+        getCommand("triggerevent").setExecutor(new TriggerEventCommand(this));
         Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(this), this);
 
         this.init();
