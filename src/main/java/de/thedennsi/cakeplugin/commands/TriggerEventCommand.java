@@ -1,15 +1,18 @@
 package de.thedennsi.cakeplugin.commands;
 
+import de.thedennsi.cakeplugin.events.EventHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TriggerEventCommand implements CommandExecutor, TabCompleter {
+
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -18,11 +21,7 @@ public class TriggerEventCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        List<String> list = new ArrayList<>();
-        Method[] methods = de.thedennsi.cakeplugin.events.EventHandler.class.getDeclaredMethods();
-        for (Method method : methods) {
-            list.add(method.getName());
-        }
-        return list;
+
+        return Arrays.stream(EventHandler.class.getDeclaredMethods()).map(Method::getName).collect(Collectors.toList());
     }
 }
