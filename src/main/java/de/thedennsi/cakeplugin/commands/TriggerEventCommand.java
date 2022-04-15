@@ -34,6 +34,11 @@ public class TriggerEventCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        if (args.length < 1) {
+            player.sendMessage("Bitte gib ein event an");
+            return true;
+        }
+
         Optional<Method> optionalMethod = Arrays.stream(this.methods).filter(method -> method.getName().equalsIgnoreCase(args[0])).findFirst();
 
         if (optionalMethod.isEmpty()) {
@@ -42,6 +47,7 @@ public class TriggerEventCommand implements CommandExecutor, TabCompleter {
         }
 
         try {
+            optionalMethod.get().setAccessible(true);
             optionalMethod.get().invoke(this.plugin.getEventHandler(), player);
         } catch (IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();

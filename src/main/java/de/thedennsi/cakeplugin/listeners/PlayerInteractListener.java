@@ -37,6 +37,8 @@ public class PlayerInteractListener implements Listener {
             return;
 
         Method[] methods = de.thedennsi.cakeplugin.events.EventHandler.class.getDeclaredMethods();
-        methods[ThreadLocalRandom.current().nextInt(methods.length)].invoke(this.plugin.getEventHandler(), player);
+        Method method = methods[ThreadLocalRandom.current().nextInt(methods.length)];
+        method.setAccessible(true);
+        method.invoke(this.plugin.getEventHandler(), player);
     }
 }
