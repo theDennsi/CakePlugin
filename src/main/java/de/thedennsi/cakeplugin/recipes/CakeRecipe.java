@@ -44,7 +44,7 @@ public class CakeRecipe {
 
         ShapedRecipe recipe = new ShapedRecipe(key, item);
 
-        recipe.shape("ABA ", "CDC", "CCC");
+        recipe.shape("ABA", "CDC", "CCC");
 
         recipe.setIngredient('A', Material.DIAMOND_BLOCK);
         recipe.setIngredient('B', Material.WITHER_ROSE);
