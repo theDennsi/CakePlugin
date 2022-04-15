@@ -1,5 +1,6 @@
 package de.thedennsi.cakeplugin.listeners;
 
+import de.thedennsi.cakeplugin.CakePlugin;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -13,6 +14,12 @@ import java.lang.reflect.Method;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PlayerInteractListener implements Listener {
+
+    private final CakePlugin plugin;
+
+    public PlayerInteractListener(CakePlugin plugin) {
+        this.plugin = plugin;
+    }
 
     @EventHandler(ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) throws InvocationTargetException, IllegalAccessException {
@@ -29,8 +36,7 @@ public class PlayerInteractListener implements Listener {
         if (player.getFoodLevel() == 20)
             return;
 
-        de.thedennsi.cakeplugin.events.EventHandler eventHandler = new de.thedennsi.cakeplugin.events.EventHandler();
         Method[] methods = de.thedennsi.cakeplugin.events.EventHandler.class.getDeclaredMethods();
-        methods[ThreadLocalRandom.current().nextInt(methods.length)].invoke(eventHandler, player);
+        methods[ThreadLocalRandom.current().nextInt(methods.length)].invoke(this.plugin.getEventHandler(), player);
     }
 }
