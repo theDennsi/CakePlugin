@@ -1,6 +1,9 @@
 package de.thedennsi.cakeplugin;
 
+import de.thedennsi.cakeplugin.commands.TriggerEventCommand;
+import de.thedennsi.cakeplugin.listeners.PlayerInteractListener;
 import de.thedennsi.cakeplugin.recipes.CakeRecipe;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,6 +17,10 @@ public class CakePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        getCommand("TriggerEvent").setExecutor(new TriggerEventCommand());
+        Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
+
         this.init();
     }
 
