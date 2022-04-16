@@ -32,11 +32,6 @@ public class EventHandler {
                     this.i++;
                 }
             }, 0, 1000);
-
-//        Bukkit.getScheduler().runTaskLater(CakePlugin.getPlugin(CakePlugin.class), () -> Bukkit.getScheduler()
-//                .cancelTask(Bukkit.getScheduler().scheduleSyncRepeatingTask(CakePlugin.getPlugin(CakePlugin.class),
-//                        () -> player.getWorld().spawnEntity(player.getLocation(), EntityType.PRIMED_TNT),
-//                        0, 20)), 5 * 20);
     }
 
     public void diamondSprinkler(Player player) {
